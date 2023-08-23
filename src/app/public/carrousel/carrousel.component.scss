@@ -1,0 +1,93 @@
+section {
+    padding: 0;
+}
+
+.carrousel {
+    height: 700px;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 100% 100% 100%;
+
+    >div {
+        width: 100%;
+        height: 700px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        align-items: flex-end;
+        position: absolute;
+    }
+
+    .img-1 {
+        background-image: url('/assets/carrousel-1.jpg');
+    }
+
+    .img-2 {
+        background-image: url('/assets/carrousel-2.jpg');
+    }
+
+    .img-3 {
+        background-image: url('/assets/carrousel-3.jpg');
+    }
+
+    .band {
+        height: 150px;
+        background-color: rgb(var(--PrimaryRgb), .85);
+        flex: 1 0 auto;
+        padding: 40px 0;
+    }
+
+    h1 {
+        font-size: 36px;
+        height: 50px;
+        text-align: center;
+        line-height: 75px;
+    }
+}
+
+.actions {
+    position: absolute;
+    margin-top: -100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 3;
+
+    .btn {
+        margin: 0 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .carrousel h1 {
+        font-size: 24px !important;
+        padding: 0 20px;
+    }
+
+}
+
+@media screen and (max-width: 425px) {
+
+    .carrousel {
+
+        .band {
+            max-width: 100%;
+            height: 200px;
+        }
+
+        h1 {
+            line-height: normal;
+            font-size: 22px !important;
+        }
+
+    }
+
+    .actions {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: -150px;
+    }
+
+}

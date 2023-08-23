@@ -1,1 +1,136 @@
-/* You can add global styles to this file, and also import other style files */
+// Toastr
+@import 'ngx-toastr/toastr';
+
+:root {
+    --Primary: #F58B1F;
+    --PrimaryLight: #5aa5f8;
+    --PrimaryDark: #004c94;
+    --PrimaryRgb: 245, 138, 7;
+    --Secondary: #07417A;
+    --SecondaryLight: #A7C0CD;
+    --SecondaryDark: #4B636E;
+    --SecondaryRgb: 8, 72, 135;
+    --Light: #E5E5E5;
+    --Dark: #333;
+    --Accent: #DB545A;
+    --Text: rgb(17, 17, 17);
+    /******************************************************************/
+    --Body: #EBEEF5;
+    --Border: #E0E0E0;
+    --GridRowOdd: #F6F7FC;
+    --GridRowHover: #E6F2FE;
+    --GridRowSelected: #BBDEFB;
+    --GridRowAlert: rgba(255, 215, 0, .35);
+    --GridRowAlertHover: rgba(255, 215, 0, .5);
+    --GridRowAlertSelected: rgba(255, 215, 0, .75);
+    --TransitionBackground: background-color ease-in-out .15s;
+}
+
+body,
+html {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans';
+    font-size: 18px;
+    font-weight: 400;
+    background-color: var(--Dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Roboto';
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+.btn {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Open Sans';
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--Text);
+    border-radius: 50px;
+    cursor: pointer;
+    padding: 15px 40px;
+    border: none;
+}
+
+.btn.primary {
+    background-color: var(--Primary);
+    color: white;
+}
+
+.btn.secondary {
+    background-color: var(--Secondary);
+    color: white;
+}
+
+.btn.accent {
+    background-color: var(--Accent);
+    color: white;
+}
+
+.btn:hover {
+    background-color: white;
+}
+
+.btn.primary:hover {
+    color: var(--Primary);
+    background-color: var(--Secondary);
+}
+
+.btn.secondary:hover {
+    color: var(--Secondary);
+}
+
+.btn.accent:hover {
+    color: var(--Accent);
+}
+
+section {
+    padding: 60px 20px 80px;
+    text-align: center;
+}
+
+input, textarea {
+    border: none;
+    font: 16px 'Open Sans';
+    padding: 10px 12px;
+}
+
+input:focus, input:active, textarea:focus, textarea:active {
+    outline: solid 3px var(--Primary);
+}
+
+html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+@media screen and (max-width: 425px) {
+
+    .btn {
+        font-size: 14px !important;
+    }
+
+    h1 {
+        font-size: 36px !important;
+    }
+
+}

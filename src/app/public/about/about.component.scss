@@ -1,0 +1,70 @@
+section {
+    background: url('/assets/about.jpg') no-repeat center/cover;
+    height: 500px;
+    color: white;
+}
+
+.container {
+    position: relative;
+    top: 340px;
+}
+
+h1 {
+    text-shadow: rgba(0, 0, 0, 0.4) 2px 2px 8px;
+}
+
+.numbers {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.number {
+    background-color: var(--Primary);
+    padding: 20px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 21px 0px;
+
+    h6 {
+        font-size: 18px;
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+
+    h3 {
+        font-size: 72px;
+        color: var(--Secondary);
+    }
+}
+
+@media screen and (max-width: 425px) {
+
+    section {
+        height: unset;
+    }
+
+    .container {
+        position: static;
+    }
+
+    h1 {
+        text-shadow: rgba(255, 255, 255, 0.8) 2px 2px 8px;
+        color: var(--Text);
+        font-size: 36px;
+    }
+
+    .numbers {
+        flex-direction: column;
+    }
+
+    .number {
+        width: auto;
+        height: auto;
+        opacity: .9;
+    }
+}

@@ -1,0 +1,78 @@
+<section>
+    <div class="container">
+        <h2>Registre los datos de su empresa</h2>
+        <form #form>
+            <input
+                type="text"
+                name="empresa"
+                [(ngModel)]="empresa.nombre"
+                placeholder="Nombre de su empresa"
+                maxlength="255"
+                required>
+
+            <input
+                type="text"
+                name="razonSocial"
+                [(ngModel)]="empresa.razonSocial"
+                placeholder="Razón Social"
+                maxlength="255">
+
+            <input
+                type="text"
+                name="ruc"
+                [(ngModel)]="empresa.ruc"
+                placeholder="Cédula o RUC"
+                maxlength="13"
+                required>
+
+            <input
+                type="text"
+                name="nombreUsuario"
+                [(ngModel)]="suscripcion.fkUsuario.nombre"
+                placeholder="Ingrese su nombre"
+                maxlength="255"
+                required>
+
+            <input
+                type="text"
+                name="direccion"
+                [(ngModel)]="empresa.direccion"
+                placeholder="Dirección"
+                maxlength="255"
+                required>
+
+            <input
+                type="text"
+                name="telefonos"
+                [(ngModel)]="empresa.telefonos"
+                placeholder="Teléfonos"
+                maxlength="60"
+                required>
+
+            <input
+                type="email"
+                name="email"
+                [(ngModel)]="suscripcion.fkUsuario.email"
+                placeholder="Su correo electrónico"
+                maxlength="255"
+                required>
+
+            <input
+                type="password"
+                name="password"
+                [(ngModel)]="suscripcion.fkUsuario.password"
+                placeholder="Contraseña"
+                maxlength="20">
+
+            <input
+                type="password"
+                name="confirmarPassword"
+                [(ngModel)]="suscripcion.fkUsuario.confirmarPassword"
+                placeholder="Confirme su contraseña"
+                maxlength="20">
+
+            <button [appShowLoading]="loading" class="btn primary" (click)="registrarse()">Registrarse</button>
+
+        </form>
+    </div>
+</section>

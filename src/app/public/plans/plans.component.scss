@@ -1,0 +1,84 @@
+section {
+    background-color: var(--Light);
+}
+
+div.plans {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.plan {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    justify-content: space-between;
+
+    img {
+        margin-bottom: 20px;
+    }
+}
+
+.plan.includes {
+    color: white;
+    background-image: linear-gradient(0deg, rgba(var(--SecondaryRgb), 0.8), rgba(var(--SecondaryRgb), 0.8)), url("/assets/support.jpg");
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+
+    li {
+        margin: 10px 0;
+    }
+
+}
+
+h5 {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+h3 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.btn {
+    margin-top: 40px;
+}
+
+.btn.green {
+    background-color: limegreen;
+}
+
+.btn.green:hover {
+    background-color: var(--Secondary);
+    color: var(--Primary);
+}
+
+@media screen and (max-width: 768px) {
+
+    h3 {
+        font-size: 30px;
+    }
+
+    .plan img {
+        width: 96px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+
+    div.plans {
+        grid-template-columns: auto;
+    }
+}

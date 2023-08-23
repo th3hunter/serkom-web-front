@@ -1,0 +1,25 @@
+<div mat-dialog-content>
+
+    <pre class="dialog-message">{{ data.message }}</pre>
+
+    <!-- <app-attribute
+        *ngIf="commentLabel"
+        name="comentario"
+        [label]="commentLabel"
+        [(ngModel)]="comentario"
+        required>
+    </app-attribute> -->
+
+</div>
+<div mat-dialog-actions class="mat-mdc-dialog-actions">
+
+    <button class="btn" (click)="cancelar()">
+        <!-- <mat-icon>clear</mat-icon> -->
+        Cancelar
+    </button>
+
+    <button class="btn primary" (click)="confirmar()" cdkFocusInitial>
+        <!-- <mat-icon>check</mat-icon> -->
+        Confirmar
+    </button>
+</div>

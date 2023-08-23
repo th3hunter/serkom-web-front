@@ -1,0 +1,64 @@
+section {
+    background-color: var(--Secondary);
+    color: white;
+    padding-top: 150px;
+}
+
+h3 {
+    font-size: 36px;
+}
+
+h6 {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.grid {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    text-align: left;
+}
+
+.column {
+    width: 33%;
+}
+
+.social {
+
+    svg {
+        width: 32px;
+        margin-right: 10px;
+    }
+}
+
+svg {
+    fill: white;
+}
+
+ul {
+    padding: 0;
+    padding-left: 21px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@media screen and (max-width: 425px) {
+
+    section {
+        padding-top: 40px;
+    }
+
+    .grid {
+        flex-direction: column;
+    }
+
+    .column {
+        width: auto;
+    }
+
+}

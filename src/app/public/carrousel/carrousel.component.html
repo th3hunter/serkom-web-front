@@ -1,0 +1,29 @@
+<section>
+    <div class="carrousel">
+        <div class="img-1" #img1 [@opacityAnimation] *ngIf="currentImage == 1">
+            <div class="band">
+                <div class="container">
+                    <h1>El mejor software ERP del mercado a un precio insuperable</h1>
+                </div>
+            </div>
+        </div>
+        <div class="img-2" #img2 [@opacityAnimation] *ngIf="currentImage == 2">
+            <div class="band">
+                <div class="container">
+                    <h1>Conquiste el nuevo milenio con tecnología en la nube</h1>
+                </div>
+            </div>
+        </div>
+        <div class="img-3" #img3 [@opacityAnimation] *ngIf="currentImage == 3">
+            <div class="band">
+                <div class="container">
+                    <h1>Ideal para pequeñas y medianas empresas</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="actions">
+        <a class="btn secondary" [routerLink]="['/']" [fragment]="'planes'">Vea nuestros planes</a>
+        <a class="btn accent" href="https://demo.serkom.com/" target="_blank">Pruébelo gratis</a>
+    </div>
+</section>

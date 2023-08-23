@@ -1,0 +1,37 @@
+<section>
+    <div class="container">
+        <h1 id="planes">Nuestros planes</h1>
+        <p>Todo lo que su empresa necesita al alcance de su presupuesto</p>
+        <div class="plans">
+            <div class="plan" *ngFor="let plan of plans">
+                <div>
+                    <img src="/assets/{{plan.codigo.toLowerCase()}}.png">
+                    <h5>{{plan.nombre}}</h5>
+                    <h3>${{plan.pvp | number:'.2'}}/mes</h3>
+                    <ul>
+                        <li *ngFor="let item of plan.detalle.split('\n')">{{item}}</li>
+                    </ul>
+                </div>
+                <button class="btn primary" (click)="agregarPlan(plan)" *ngIf="!plan.seleccionado">Lo quiero</button>
+                <button class="btn primary green" (click)="quitarPlan(plan)" *ngIf="plan.seleccionado">Agregado</button>
+            </div>
+            <div class="plan includes">
+                <div>
+                    <h3>Todos nuestros planes incluyen</h3>
+                    <ul>
+                        <li>Soporte Técnico de Lunes a Viernes de 8am a 5pm</li>
+                        <li>Emisión ilimitada de documentos</li>
+                        <li>Sistema en la nube 24/7</li>
+                        <li>Respaldo automático de información</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <button
+            class="btn secondary"
+            [routerLink]="['/registrese']"
+            *ngIf="carrito.items.length > 0">
+            Proceder al pago
+        </button>
+    </div>
+</section>

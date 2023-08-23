@@ -1,0 +1,39 @@
+section {
+    height: 700px;
+    background: url("/assets/advertise.jpg") no-repeat center/cover;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    flex: 1 0 auto;
+}
+
+h2 {
+    font-size: 48px;
+    font-weight: 400;
+    margin: 15px 0;
+}
+
+.advertise {
+    width: 50%;
+    padding: 40px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 18px;
+    text-align: left;
+}
+
+p {
+    margin-bottom: 40px;
+}
+
+.btn {
+    margin: 20px 0;
+}
+
+@media screen and (max-width: 425px) {
+
+    .advertise {
+        width: auto;
+    }
+}

@@ -1,0 +1,19 @@
+<section>
+    <div class="container">
+        <h2>
+            Ingrese los 6 dígitos de confirmación
+        </h2>
+        <p>Revise a su bandeja de correo electrónico para activar su cuenta.</p>
+        <div>
+            <input
+                type="password"
+                name="codigoConfirmacion"
+                [(ngModel)]="codigoConfirmacion"
+                placeholder="Código de Confirmación"
+                maxlength="6">
+        </div>
+        <button [appShowLoading]="loading" class="btn primary" (click)="confirmar()">
+            Confirmar mi cuenta
+        </button>
+    </div>
+</section>
