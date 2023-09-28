@@ -7,6 +7,7 @@ dayjs.locale('es');
 
 const dateFormat = 'YYYY-MM-DD';
 const clientDateFormat = 'DD/MM/YYYY';
+const clientDateTimeFormat = 'DD/MM/YYYY HH:mm';
 const serverDateFormat = 'YYYY-MM-DDTHH:mm:ss';
 
 /**
@@ -18,6 +19,13 @@ export const DateHelper = {
             return dayjs().format(clientDateFormat);
         } else {
             return dayjs(date).format(clientDateFormat);
+        }
+    },
+    toClientTimeFormat(date?: Date | string): string {
+        if (!date) {
+            return dayjs().format(clientDateTimeFormat);
+        } else {
+            return dayjs(date).format(clientDateTimeFormat);
         }
     },
     current(): dayjs.Dayjs {

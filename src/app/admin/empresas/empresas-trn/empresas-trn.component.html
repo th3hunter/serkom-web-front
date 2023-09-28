@@ -1,0 +1,134 @@
+<app-dialog
+    title="Empresa"
+    [loading]="loading"
+    (ok)="guardar()"
+    (cancel)="cancelar()">
+
+    <form #form="ngForm" class="form vertical bordered">
+
+        <label for="empresa">Nombre de la empresa</label>
+        <input
+            type="text"
+            name="empresa"
+            id="empresa"
+            [(ngModel)]="atributos.nombre"
+            placeholder="Nombre de la empresa"
+            maxlength="255"
+            required>
+
+        <label for="razonSocial">Razón Social</label>
+        <input
+            type="text"
+            name="razonSocial"
+            id="razonSocial"
+            [(ngModel)]="atributos.razonSocial"
+            placeholder="Razón Social"
+            maxlength="255">
+
+        <label for="ruc">Cédula o RUC</label>
+        <input
+            type="text"
+            name="ruc"
+            id="ruc"
+            [(ngModel)]="atributos.ruc"
+            placeholder="Cédula o RUC"
+            maxlength="13"
+            required>
+
+        <label for="direccion">Dirección</label>
+        <input
+            type="text"
+            name="direccion"
+            id="direccion"
+            [(ngModel)]="atributos.direccion"
+            placeholder="Dirección"
+            maxlength="255"
+            required>
+
+        <label for="telefonos">Teléfonos</label>
+        <input
+            type="text"
+            name="telefonos"
+            id="telefonos"
+            [(ngModel)]="atributos.telefonos"
+            placeholder="Teléfonos"
+            maxlength="60"
+            required>
+
+        <label for="suscripcionId">No. Suscripción</label>
+        <div class="prompt">
+            <input
+                type="text"
+                name="suscripcionId"
+                id="suscripcionId"
+                [(ngModel)]="atributos.suscripcionId"
+                placeholder="No. Suscripción"
+                maxlength="60"
+                readonly
+                required>
+            <button class="btn sufix" (click)="buscarSuscripcion()"><mat-icon>search</mat-icon></button>
+        </div>
+
+        <label for="titular">Titular</label>
+        <input
+            type="text"
+            name="titular"
+            id="titular"
+            [(ngModel)]="atributos.fkSuscripcion.fkUsuario.nombre"
+            placeholder="Nombre del Titular"
+            maxlength="60"
+            disabled>
+
+        <label for="email">Email</label>
+        <input
+            type="email"
+            name="email"
+            id="email"
+            [(ngModel)]="atributos.fkSuscripcion.fkUsuario.email"
+            placeholder="Email"
+            maxlength="60"
+            disabled>
+
+        <label for="instanciaId">Instancia asignada</label>
+        <div class="select">
+            <select
+                name="instanciaId"
+                id="instanciaId"
+                [(ngModel)]="atributos.instanciaId">
+
+                <option selected disabled>Elija una opción</option>
+
+                <option
+                    *ngFor="let estado of instancias"
+                    [value]="estado.instanciaId">
+
+                    {{estado.nombre}}
+
+                </option>
+
+            </select>
+        </div>
+
+        <label for="estado">Estado</label>
+        <div class="select">
+            <select
+                name="estado"
+                id="estado"
+                [(ngModel)]="atributos.estado">
+
+                <option selected disabled>Elija una opción</option>
+
+                <option
+                    *ngFor="let estado of estadosEmpresa"
+                    [value]="estado.id">
+
+                    {{estado.description}}
+
+                </option>
+
+            </select>
+        </div>
+
+    </form>
+
+</app-dialog>

@@ -1,0 +1,57 @@
+<h2>Mis empresas</h2>
+
+<div *ngIf="!loading" class="empresas">
+
+    <div
+        *ngFor="let empresa of empresas; let i = index;"
+        class="empresa card">
+
+        <div class="info">
+            <h3>{{empresa.nombre}}</h3>
+            <span>Ruc: {{empresa.ruc}}</span>
+            <span>{{empresa.estado}}</span>
+            <span>Costo: <strong class="text-big">$ {{ empresa.costoTotal ? (empresa.costoTotal | number : '1.2-2') : '0.00' }}</strong></span>
+        </div>
+
+        <div class="actions">
+
+            <button class="btn secondary transparent outlined" (click)="modificarEmpresa(empresa)">
+                <mat-icon>edit</mat-icon>
+                Cambiar datos
+            </button>
+
+            <button class="btn accent transparent outlined" (click)="eliminarEmpresa(empresa)">
+                <mat-icon>clear</mat-icon>
+                Eliminar empresa
+            </button>
+
+        </div>
+
+        <div class="modulos">
+            <h4>Módulos contratados:</h4>
+
+            <div class="modulos-grid">
+
+                <div *ngFor="let modulo of empresa.fkProductos" class="modulo">
+                    <img [src]="'/assets/' + modulo.fkProducto.codigo.toLowerCase() + '.png'" alt="">
+                    <span>{{ modulo.fkProducto.nombre }}</span>
+                </div>
+
+                <div *ngIf="empresa.fkProductos.length == 0">
+                    No hay módulos agregados todavía
+                </div>
+
+                <button class="btn square primary transparent outlined" (click)="agregarModulos(empresa.empresaId)">Añadir o quitar Módulos</button>
+
+            </div>
+        </div>
+
+    </div>
+
+    <button class="btn green" (click)="agregarEmpresa()">
+        <mat-icon>add</mat-icon>Agregar nueva Empresa
+    </button>
+
+</div>
+
+<app-loading *ngIf="loading"></app-loading>

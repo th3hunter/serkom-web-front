@@ -1,0 +1,40 @@
+h2 {
+    margin-bottom: 20px;
+}
+
+h4 {
+    margin-bottom: 20px;
+}
+
+.modulos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modulo {
+    display: grid;
+    grid-template-columns: 56px auto 100px 250px;
+    gap: 10px;
+    align-items: center;
+
+    img {
+        width: 48px;
+    }
+}
+
+.card > .btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.split {
+    display: grid;
+    grid-template-columns: auto 400px;
+}
+
+.actions {
+    flex-direction: column;
+    gap: 10px;
+    display: flex;
+}

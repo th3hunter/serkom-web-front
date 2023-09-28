@@ -12,8 +12,25 @@
                         <li *ngFor="let item of plan.detalle.split('\n')">{{item}}</li>
                     </ul>
                 </div>
-                <button class="btn primary" (click)="agregarPlan(plan)" *ngIf="!plan.seleccionado">Lo quiero</button>
-                <button class="btn primary green" (click)="quitarPlan(plan)" *ngIf="plan.seleccionado">Agregado</button>
+
+                <button
+                    class="btn primary add"
+                    (click)="agregarPlan(plan)"
+                    *ngIf="!plan.seleccionado">
+
+                    <mat-icon>add</mat-icon><span>Lo quiero</span>
+
+                </button>
+
+                <button
+                    class="btn primary green add"
+                    (click)="quitarPlan(plan)"
+                    *ngIf="plan.seleccionado">
+
+                    <mat-icon>check</mat-icon><span>Agregado</span>
+
+                </button>
+
             </div>
             <div class="plan includes">
                 <div>

@@ -1,0 +1,24 @@
+section {
+    background-color: white;
+}
+
+h1 {
+    color: var(--Accent);
+}
+
+img {
+    width: 100%;
+    max-width: 450px;
+}
+
+a {
+    display: block;
+    max-width: 300px;
+    margin: 40px auto 0;
+    width: 100%;
+}
+
+.split {
+    display: flex;
+    flex-direction: row;
+}

@@ -27,14 +27,6 @@
 
             <input
                 type="text"
-                name="nombreUsuario"
-                [(ngModel)]="suscripcion.fkUsuario.nombre"
-                placeholder="Ingrese su nombre"
-                maxlength="255"
-                required>
-
-            <input
-                type="text"
                 name="direccion"
                 [(ngModel)]="empresa.direccion"
                 placeholder="Dirección"
@@ -47,6 +39,16 @@
                 [(ngModel)]="empresa.telefonos"
                 placeholder="Teléfonos"
                 maxlength="60"
+                required>
+
+            <h3>Sus datos para ingresar a la plataforma</h3>
+
+            <input
+                type="text"
+                name="nombreUsuario"
+                [(ngModel)]="suscripcion.fkUsuario.nombre"
+                placeholder="Ingrese su nombre"
+                maxlength="255"
                 required>
 
             <input

@@ -1,0 +1,44 @@
+section {
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 200px auto;
+    padding: 0;
+}
+
+nav {
+    background-color: var(--Secondary);
+    color: white;
+    padding: 10px 40px;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+    }
+
+    li {
+        padding: 5px 0;
+    }
+
+    a, a:visited, a:active {
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    a:hover {
+        color: var(--Primary);
+    }
+}
+
+.content {
+    padding: 20px 0 20px 40px;
+}
+
+nav hr {
+    border-style: dashed;
+}

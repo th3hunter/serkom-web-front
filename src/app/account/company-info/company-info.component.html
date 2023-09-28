@@ -1,0 +1,61 @@
+<app-dialog
+    [title]="title"
+    [loading]="loading"
+    (ok)="guardar()"
+    (cancel)="cancelar()"
+    [okText]="okText" >
+
+    <form #form="ngForm" class="bordered">
+
+        <label for="empresa">Nombre de la empresa</label>
+        <input
+            type="text"
+            name="empresa"
+            id="empresa"
+            [(ngModel)]="empresa.nombre"
+            placeholder="Nombre de la empresa"
+            maxlength="255"
+            required>
+
+        <label for="razonSocial">Razón Social</label>
+        <input
+            type="text"
+            name="razonSocial"
+            id="razonSocial"
+            [(ngModel)]="empresa.razonSocial"
+            placeholder="Razón Social"
+            maxlength="255">
+
+        <label for="ruc">Cédula o RUC</label>
+        <input
+            type="text"
+            name="ruc"
+            id="ruc"
+            [(ngModel)]="empresa.ruc"
+            placeholder="Cédula o RUC"
+            maxlength="13"
+            required>
+
+        <label for="direccion">Dirección</label>
+        <input
+            type="text"
+            name="direccion"
+            id="direccion"
+            [(ngModel)]="empresa.direccion"
+            placeholder="Dirección"
+            maxlength="255"
+            required>
+
+        <label for="telefonos">Teléfonos</label>
+        <input
+            type="text"
+            name="telefonos"
+            id="telefonos"
+            [(ngModel)]="empresa.telefonos"
+            placeholder="Teléfonos"
+            maxlength="60"
+            required>
+
+    </form>
+
+</app-dialog>

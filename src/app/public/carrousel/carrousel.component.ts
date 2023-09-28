@@ -19,17 +19,16 @@ export class CarrouselComponent implements OnInit, OnDestroy {
     suscriptions = new Subscription();
 
     constructor(@Inject(PLATFORM_ID) platformId: Object) {
-
         this.isBrowser = isPlatformBrowser(platformId);
     }
 
     ngOnInit(): void {
-        if (this.isBrowser) {
-        // if (false) {
-            this.intervalRef = setInterval(() => {
-                this.currentImage = this.currentImage == 3 ? 1 : this.currentImage == 0 ? 2 : this.currentImage + 1;
-            }, this.duration);
-        };
+        if (!this.isBrowser)
+            return;
+
+        this.intervalRef = setInterval(() => {
+            this.currentImage = this.currentImage == 3 ? 1 : this.currentImage == 0 ? 2 : this.currentImage + 1;
+        }, this.duration);
     }
 
     ngOnDestroy(): void {

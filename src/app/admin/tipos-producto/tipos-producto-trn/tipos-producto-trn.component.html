@@ -1,0 +1,35 @@
+<app-dialog
+    title="Tipo de Producto"
+    [loading]="loading"
+    (ok)="guardar()"
+    (cancel)="cancelar()">
+
+    <form #form="ngForm" class="form vertical bordered">
+
+        <label for="descripcion">Nombre</label>
+        <input
+            type="text"
+            name="descripcion"
+            id="descripcion"
+            [(ngModel)]="atributos.descripcion"
+            placeholder="Nombre"
+            maxlength="60"
+            required>
+
+        <label for="estado">Estado</label>
+        <div class="select">
+            <select
+                name="estado"
+                id="estado"
+                [(ngModel)]="atributos.estado">
+
+                <option selected disabled>Elija una opción</option>
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+
+            </select>
+        </div>
+
+    </form>
+
+</app-dialog>

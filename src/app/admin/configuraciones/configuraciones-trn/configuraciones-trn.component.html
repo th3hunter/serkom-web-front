@@ -1,0 +1,80 @@
+<app-dialog
+    title="Configuración"
+    [loading]="loading"
+    (ok)="guardar()"
+    (cancel)="cancelar()">
+
+    <form #form="ngForm" class="form vertical bordered">
+
+        <label for="tipoConfiguracionId">Tipo</label>
+        <div class="select">
+            <select
+                name="tipoConfiguracionId"
+                id="tipoConfiguracionId"
+                [(ngModel)]="atributos.tipoConfiguracionId">
+
+                <option selected disabled>Elija una opción</option>
+
+                <option
+                    *ngFor="let estado of tiposConfiguracion"
+                    [value]="estado.tipoConfiguracionId">
+
+                    {{estado.descripcion}}
+
+                </option>
+
+            </select>
+        </div>
+
+        <label for="configuracionId">Configuración</label>
+        <input
+            type="text"
+            name="configuracionId"
+            id="configuracionId"
+            [(ngModel)]="atributos.configuracionId"
+            placeholder="Configuración"
+            maxlength="128"
+            required>
+
+        <label for="descripcion">Descripcion</label>
+        <input
+            type="text"
+            name="descripcion"
+            id="descripcion"
+            [(ngModel)]="atributos.descripcion"
+            placeholder="Descripcion"
+            maxlength="255"
+            required>
+
+        <label for="tipoDato">Tipo de Dato</label>
+        <div class="select">
+            <select
+                name="tipoDato"
+                id="tipoDato"
+                [(ngModel)]="atributos.tipoDato">
+
+                <option selected disabled>Elija una opción</option>
+
+                <option
+                    *ngFor="let estado of tiposDato"
+                    [value]="estado.id">
+
+                    {{estado.description}}
+
+                </option>
+
+            </select>
+        </div>
+
+        <label for="valor">Valor</label>
+        <input
+            type="text"
+            name="valor"
+            id="valor"
+            [(ngModel)]="atributos.valor"
+            placeholder="Valor"
+            required>
+
+    </form>
+
+</app-dialog>

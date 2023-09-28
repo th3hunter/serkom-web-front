@@ -1,0 +1,43 @@
+<h2>Historial de Pagos</h2>
+
+<form #form="ngForm" class="filter">
+
+    <div class="date filter">
+        <input
+            [matDatepicker]="desdePicker"
+            type="text"
+            name="desde"
+            id="desde"
+            [(ngModel)]="filtros.getField('fecha').value"
+            placeholder="Desde"
+            required>
+        <mat-datepicker-toggle matIconSuffix [for]="desdePicker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #desdePicker></mat-datepicker>
+    </div>
+
+    <div class="date filter">
+        <input
+            [matDatepicker]="hastaPicker"
+            type="text"
+            name="hasta"
+            id="hasta"
+            [(ngModel)]="filtros.getField('fecha').valueTo"
+            placeholder="Hasta"
+            required>
+        <mat-datepicker-toggle matIconSuffix [for]="hastaPicker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #hastaPicker></mat-datepicker>
+    </div>
+
+    <input type="text" name="fkFactura.noDocumento" [(ngModel)]="filtros.getField('fkFactura.noDocumento').value" placeholder="No. documento">
+
+    <button class="btn primary icon" (click)="grid.refresh()">
+        <mat-icon>search</mat-icon>
+    </button>
+
+</form>
+
+<app-grid
+    restURL="pagos/mis-pagos"
+    [columns]="columnas"
+    [filters]="filtros">
+</app-grid>

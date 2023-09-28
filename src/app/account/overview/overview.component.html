@@ -1,0 +1,47 @@
+<div *ngIf="!loading" class="card">
+
+    <h2>Mi suscripción</h2>
+
+    <div class="split">
+
+        <div class ="info">
+                <span>Fecha de ingreso</span>
+                <h4>{{ suscripcion.fechaIngreso | date : 'dd/MM/yyyy' }}</h4>
+
+                <span>Estado</span>
+            <h4>{{ suscripcion.estado }}</h4>
+
+            <span>Próxima fecha de pago</span>
+            <h4>{{ suscripcion.fechaProximoPago | date : 'dd/MM/yyyy' }}</h4>
+
+            <span>Próximo valor a pagar</span>
+            <h4 class="text-big">$ {{ suscripcion.valorProximoPago | number : '1.2-2' }}</h4>
+        </div>
+
+        <div class="actions">
+
+            <button
+                class="btn secondary"
+                (click)="modificarMetodoPago()">
+                <mat-icon>credit_card</mat-icon>
+                Cambiar método de Pago
+            </button>
+
+            <button
+                class="btn accent"
+                (click)="cancelarSuscripcion()">
+                <mat-icon>delete</mat-icon>
+                Cancelar suscripción
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div>
+    <app-companies (modulesChanged)="cargarSuscripcion(true)"></app-companies>
+</div>
+
+<app-loading *ngIf="loading"></app-loading>

@@ -1,1 +1,45 @@
-<p>payment-confirm works!</p>
+<section>
+    <div class="container">
+
+        <h2>Confirme los módulos que va a utilizar</h2>
+
+        <app-loading *ngIf="loading"></app-loading>
+
+        <div class="productos">
+            <div
+                *ngFor="let producto of productos; let i = index;"
+                matRipple
+                class="producto"
+                (click)="seleccionarProducto(producto)"
+                [ngClass]="{'green': producto.seleccionado}">
+
+                <mat-icon *ngIf="producto.seleccionado">check</mat-icon>
+                <mat-icon *ngIf="!producto.seleccionado">add</mat-icon>
+
+                <span>{{producto.nombre}}</span>
+                <span class="empty"></span>
+                <span>$ {{producto.pvp | number : '1.2-2'}}</span>
+
+            </div>
+
+        </div>
+
+        <h3 class="total">Total a pagar: $ {{(total || 0) | number : '1.2-2'}}</h3>
+
+        <button
+            [appShowLoading]="loading"
+            (click)="pagar()"
+            class="btn primary">
+
+            Realizar el pago
+
+        </button>
+
+    </div>
+</section>
+
+<!-- <section style="background-color: white;">
+    <div class="container">
+        <h2>Seleccione su método de pago</h2>
+    </div>
+</section> -->

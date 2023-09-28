@@ -1,3 +1,5 @@
+import { ProductosImpuestos } from "./productos-impuestos";
+
 export interface Productos {
     productoId: number; // numeric(7,0)
     codigo: string; // character varying(30)
@@ -14,6 +16,8 @@ export interface Productos {
     cuentaContableCostoUid: string;
     cuentaContableInventarioUid: string;
     detalle: string;
+
+    fkImpuestos: ProductosImpuestos[];
 
     // Helpers
     seleccionado: boolean;

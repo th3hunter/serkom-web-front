@@ -1,0 +1,60 @@
+.productos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 500px;
+}
+
+.producto {
+    display: grid;
+    grid-template-columns: 50px auto auto;
+    gap: 20px;
+    background-color: white;
+    padding: 15px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.producto span:last-child {
+    text-align: right;
+}
+
+.empty {
+    display: none;
+}
+
+.total {
+    // background-color: var(--Accent);
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    color: var(--Accent);
+    padding: 20px 0;
+}
+
+.green {
+    background-color: var(--Green);
+    color: white;
+}
+
+.btn {
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 425px) {
+    .producto {
+        grid-template-columns: 50px auto;
+        justify-content: start;
+    }
+
+    .empty {
+        display: block;
+    }
+
+    .producto span:last-child {
+        text-align: left;
+    }
+}

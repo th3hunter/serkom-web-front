@@ -1,0 +1,35 @@
+<section>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><h4>Principal</h4></li>
+                <li><a [routerLink]="['/admin']">Resumen</a></li>
+                <li><a [routerLink]="['/admin/empresas']">Empresas</a></li>
+                <li><a [routerLink]="['/admin/facturas']">Facturas</a></li>
+                <li><a [routerLink]="['/admin/pagos']">Pagos</a></li>
+                <li><a [routerLink]="['/admin/suscripciones']">Suscripciones</a></li>
+                <li><a [routerLink]="['/admin/usuarios']">Usuarios</a></li>
+                <li><hr></li>
+                <li><h4>Configuración</h4></li>
+                <li><a [routerLink]="['/admin/configuraciones']">Configuraciones</a></li>
+                <li><a [routerLink]="['/admin/instancias']">Instancias</a></li>
+                <!-- <li><a [routerLink]="['/admin/grupos-usuarios']">Grupos de Usuarios</a></li> -->
+                <li><hr></li>
+                <li><h4>Catálogos</h4></li>
+                <li><a [routerLink]="['/admin/impuestos']">Impuestos</a></li>
+                <li><a [routerLink]="['/admin/productos']">Productos</a></li>
+                <li><a [routerLink]="['/admin/reportes']">Reportes</a></li>
+                <li><hr></li>
+                <li><h4>Tipos</h4></li>
+                <li><a [routerLink]="['/admin/tipos-configuraciones']">Configuraciones</a></li>
+                <li><a [routerLink]="['/admin/tipos-impuestos']">Impuestos</a></li>
+                <li><a [routerLink]="['/admin/tipos-productos']">Productos</a></li>
+                <li><hr></li>
+                <li><a (click)="logout();">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+        <div class="content" [@routerAnimation]="prepareRoute(o)">
+            <router-outlet #o="outlet"></router-outlet>
+        </div>
+    </div>
+</section>

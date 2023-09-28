@@ -1,0 +1,22 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div [style]="loading ? 'visibility: hidden' : ''">
+    <div style="display: flex; flex-direction: row;">
+
+        <h1 mat-dialog-title style="flex-grow: 1;">{{title}}</h1>
+
+        <button class="close" (click)="cancel.emit()" style="margin-top: -5px;">
+            <mat-icon>close</mat-icon>
+        </button>
+
+    </div>
+
+    <div mat-dialog-content style="padding-top: 5px; padding-bottom: 5px;">
+        <ng-content></ng-content>
+    </div>
+
+    <div mat-dialog-actions *ngIf="hideButtons != ''">
+        <button class="btn transparent" (click)="cancel.emit()">{{ cancelText }}</button>
+        <button [appShowLoading]="loading" class="btn primary transparent" (click)="ok.emit()" cdkFocusInitial>{{ okText }}</button>
+    </div>
+</div>

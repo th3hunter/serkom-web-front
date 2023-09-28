@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
 import { FormsModule } from '@angular/forms';
 
-// Material
-import { MatIconModule } from '@angular/material/icon';
+// Modules
+import { CorePublicModule } from '../core/core.public.module';
 
 // Components
 import { IndexComponent } from './index/index.component';
@@ -19,7 +19,10 @@ import { CarrouselComponent } from './carrousel/carrousel.component';
 import { LoginComponent } from './login/login.component';
 import { CheckoutComponent } from './checkout/checkout.component'
 import { CheckoutConfirmComponent } from './checkout-confirm/checkout-confirm.component';
-import { CorePublicModule } from '../core/core.public.module';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RestorePasswordComponent } from './restore-password/restore-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +36,11 @@ import { CorePublicModule } from '../core/core.public.module';
         CarrouselComponent,
         LoginComponent,
         CheckoutComponent,
-        CheckoutConfirmComponent
+        CheckoutConfirmComponent,
+        UnauthorizedComponent,
+        NotFoundComponent,
+        RestorePasswordComponent,
+        ForgotPasswordComponent
     ],
     imports: [
         CommonModule,
@@ -41,9 +48,6 @@ import { CorePublicModule } from '../core/core.public.module';
         AppRoutingModule,
         FormsModule,
         CorePublicModule,
-
-        // Material
-        MatIconModule
     ],
     exports: []
 })

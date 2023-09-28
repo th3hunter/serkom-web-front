@@ -1,1 +1,17 @@
-<p>mi-cuenta/index works!</p>
+<section>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a [routerLink]="['/mi-cuenta']">Suscripción</a></li>
+                <li><a [routerLink]="['/mi-cuenta/usuario']">Usuario</a></li>
+                <li><a [routerLink]="['/mi-cuenta/pagos']">Pagos</a></li>
+                <li><a [routerLink]="['/mi-cuenta/facturas']">Facturas</a></li>
+                <li><hr></li>
+                <li><a (click)="logout();">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+        <div class="content" [@routerAnimation]="prepareRoute(o)">
+            <router-outlet #o="outlet"></router-outlet>
+        </div>
+    </div>
+</section>

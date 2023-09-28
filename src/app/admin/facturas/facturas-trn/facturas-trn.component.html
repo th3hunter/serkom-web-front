@@ -1,0 +1,186 @@
+<app-dialog
+    title="Factura"
+    [loading]="loading"
+    (ok)="guardar()"
+    (cancel)="cancelar()">
+
+    <form #form="ngForm" class="form vertical bordered">
+
+        <label for="fecha">Fecha</label>
+        <div class="date">
+            <input
+                [matDatepicker]="fechaPicker"
+                type="text"
+                name="fecha"
+                id="fecha"
+                [(ngModel)]="atributos.fecha"
+                placeholder="Fecha"
+                required>
+            <mat-datepicker-toggle matIconSuffix [for]="fechaPicker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #fechaPicker></mat-datepicker>
+        </div>
+
+        <label for="suscripcionId">Suscripción</label>
+        <div class="prompt">
+            <input
+                type="text"
+                name="suscripcionId"
+                id="suscripcionId"
+                [(ngModel)]="atributos.suscripcionId"
+                placeholder="Suscripción"
+                maxlength="60"
+                readonly
+                required>
+            <button class="btn sufix" (click)="buscarSuscripcion()"><mat-icon>search</mat-icon></button>
+        </div>
+
+        <label for="fkSuscripcion.fkUsuario.nombre">Titular</label>
+        <input
+            type="text"
+            name="fkSuscripcion.fkUsuario.nombre"
+            id="fkSuscripcion.fkUsuario.nombre"
+            [(ngModel)]="atributos.fkSuscripcion.fkUsuario.nombre"
+            placeholder="Titular"
+            maxlength="60"
+            disabled>
+
+        <label for="noDocumento">No. Documento</label>
+        <input
+            type="text"
+            name="noDocumento"
+            id="noDocumento"
+            [(ngModel)]="atributos.noDocumento"
+            placeholder="No. Documento"
+            maxlength="20"
+            required>
+
+        <label for="fechaVence">Fecha vencimiento</label>
+        <div class="date">
+            <input
+                [matDatepicker]="fechaVencePicker"
+                type="text"
+                name="fechaVence"
+                id="fechaVence"
+                [(ngModel)]="atributos.fechaVence"
+                placeholder="Fecha vencimiento"
+                required>
+            <mat-datepicker-toggle matIconSuffix [for]="fechaVencePicker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #fechaVencePicker></mat-datepicker>
+        </div>
+
+        <label for="fechaPago">Fecha pago</label>
+        <div class="date">
+            <input
+                [matDatepicker]="fechaPagoPicker"
+                type="text"
+                name="fechaPago"
+                id="fechaPago"
+                [(ngModel)]="atributos.fechaPago"
+                placeholder="Fecha pago"
+                required>
+            <mat-datepicker-toggle matIconSuffix [for]="fechaPagoPicker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #fechaPagoPicker></mat-datepicker>
+        </div>
+
+        <label for="total">Valor</label>
+        <input
+            appNumber
+            dataType="decimal"
+            type="text"
+            name="total"
+            id="total"
+            [(ngModel)]="atributos.total"
+            placeholder="Valor"
+            maxlength="7"
+            required>
+
+        <label for="saldo">Saldo</label>
+        <input
+            appNumber
+            dataType="decimal"
+            type="text"
+            name="saldo"
+            id="saldo"
+            [(ngModel)]="atributos.saldo"
+            placeholder="Saldo"
+            maxlength="60">
+
+        <mat-checkbox name="pagada" [(ngModel)]="atributos.pagada">
+            Pagada
+        </mat-checkbox>
+
+        <label for="observacion">Observación</label>
+        <input
+            type="text"
+            name="observacion"
+            id="observacion"
+            [(ngModel)]="atributos.observacion"
+            placeholder="Observación"
+            maxlength="1024">
+
+        <label for="claveAcceso">Clave Acceso</label>
+        <input
+            type="text"
+            name="claveAcceso"
+            id="claveAcceso"
+            [(ngModel)]="atributos.claveAcceso"
+            placeholder="Clave Acceso"
+            maxlength="49">
+
+        <label for="numAutorizacion">Num. Autorización</label>
+        <input
+            type="text"
+            name="numAutorizacion"
+            id="numAutorizacion"
+            [(ngModel)]="atributos.numAutorizacion"
+            placeholder="Num. Autorización"
+            maxlength="120">
+
+        <label for="respuestaSri">Respuesta SRI</label>
+        <input
+            type="text"
+            name="respuestaSri"
+            id="respuestaSri"
+            [(ngModel)]="atributos.respuestaSri"
+            placeholder="Respuesta SRI">
+
+        <label for="estadoAutorizacionSri">Estado Autorizacion SRI</label>
+        <input
+            type="text"
+            name="estadoAutorizacionSri"
+            id="estadoAutorizacionSri"
+            [(ngModel)]="atributos.estadoAutorizacionSri"
+            placeholder="Estado Autorizacion SRI"
+            maxlength="30">
+
+        <label for="fechaHoraAutorizacion">Fecha autorización</label>
+        <div class="date">
+            <input
+                [matDatepicker]="fechaHoraAutorizacionPicker"
+                type="text"
+                name="fechaHoraAutorizacion"
+                id="fechaHoraAutorizacion"
+                [(ngModel)]="atributos.fechaHoraAutorizacion"
+                placeholder="Fecha autorización"
+                required>
+            <mat-datepicker-toggle matIconSuffix [for]="fechaHoraAutorizacionPicker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #fechaHoraAutorizacionPicker></mat-datepicker>
+        </div>
+
+        <label for="estado">Estado</label>
+        <div class="select">
+            <select
+                name="estado"
+                id="estado"
+                [(ngModel)]="atributos.estado">
+
+                <option selected disabled>Elija una opción</option>
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+
+            </select>
+        </div>
+
+    </form>
+
+</app-dialog>

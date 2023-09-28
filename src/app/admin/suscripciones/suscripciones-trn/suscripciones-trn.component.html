@@ -1,0 +1,109 @@
+<app-dialog
+    title="Suscripción"
+    [loading]="loading"
+    (ok)="guardar()"
+    (cancel)="cancelar()">
+
+    <form #form="ngForm" class="form vertical bordered">
+
+        <label for="usuarioTitularId">Usuario Titular</label>
+        <div class="prompt">
+            <input
+                type="text"
+                name="usuarioTitularId"
+                id="usuarioTitularId"
+                [(ngModel)]="atributos.usuarioTitularId"
+                placeholder="Usuario Titular"
+                maxlength="60"
+                readonly
+                required>
+            <button class="btn sufix" (click)="buscarUsuario()"><mat-icon>search</mat-icon></button>
+        </div>
+
+        <label for="fkUsuario.nombre">Nombre</label>
+        <input
+            type="text"
+            name="fkUsuario.nombre"
+            id="fkUsuario.nombre"
+            [(ngModel)]="atributos.fkUsuario.nombre"
+            placeholder="Nombre"
+            maxlength="255"
+            disabled>
+
+        <label for="fechaIngreso">Fecha ingreso</label>
+        <input
+            type="text"
+            name="fechaIngreso"
+            id="fechaIngreso"
+            [(ngModel)]="atributos.fechaIngreso"
+            placeholder="Fecha ingreso"
+            maxlength="60"
+            disabled>
+
+        <label for="codigoValidacion">Código validación</label>
+        <input
+            type="text"
+            name="codigoValidacion"
+            id="codigoValidacion"
+            [(ngModel)]="atributos.codigoValidacion"
+            placeholder="Código validación"
+            maxlength="6">
+
+        <label for="uid">Uid</label>
+        <input
+            type="text"
+            name="uid"
+            id="uid"
+            [(ngModel)]="atributos.uid"
+            placeholder="Uid"
+            maxlength="128">
+
+        <label for="fechaProximoPago">Fecha próximo pago</label>
+        <div class="date">
+            <input
+                [matDatepicker]="picker"
+                type="text"
+                name="fechaProximoPago"
+                id="fechaProximoPago"
+                [(ngModel)]="atributos.fechaProximoPago"
+                placeholder="Fecha próximo pago"
+                required>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+        </div>
+
+        <label for="valorProximoPago">Valor</label>
+        <input
+            appNumber
+            dataType="decimal"
+            type="text"
+            name="valorProximoPago"
+            id="valorProximoPago"
+            [(ngModel)]="atributos.valorProximoPago"
+            placeholder="Valor"
+            maxlength="60"
+            required>
+
+        <label for="estado">Estado</label>
+        <div class="select">
+            <select
+                name="estado"
+                id="estado"
+                [(ngModel)]="atributos.estado">
+
+                <option selected disabled>Elija una opción</option>
+
+                <option
+                    *ngFor="let estado of estadosSuscripcion"
+                    [value]="estado.id">
+
+                    {{estado.description}}
+
+                </option>
+
+            </select>
+        </div>
+
+    </form>
+
+</app-dialog>

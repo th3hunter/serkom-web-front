@@ -3,5 +3,6 @@ export interface Credentials {
     email: string;
     token: string;
     nombreUsuario: string;
+    tipoUsuario: string;
     versionApi: string;
 }

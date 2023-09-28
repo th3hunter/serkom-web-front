@@ -12,7 +12,7 @@ export class LoginService {
 
     credentials = this._credentials$.asObservable();
 
-    constructor(private httpService: HttpService) { }
+    constructor() { }
 
     /**
      * Inicia sesión

@@ -16,16 +16,17 @@
                     <a [routerLink]="['/']" [fragment]="'contacto'">Contacto</a>
                 </li>
                 <li>
-                    <a *ngIf="!credentials" [routerLink]="['/login']">Login</a>
-                    <a *ngIf="credentials" [routerLink]="['/mi-cuenta']">Mi cuenta</a>
+                    <a *ngIf="!credentials || !credentials?.tipoUsuario" [routerLink]="['/login']">Mi cuenta</a>
+                    <a *ngIf="credentials?.tipoUsuario == 'NORMAL'" [routerLink]="['/mi-cuenta']">Mi cuenta</a>
+                    <a *ngIf="credentials?.tipoUsuario == 'ADMIN'" [routerLink]="['/admin']">Admin</a>
                 </li>
             </ul>
         </nav>
     </div>
 </header>
-<div class="content">
-    <router-outlet></router-outlet>
-</div>
+<main class="content" [@routerAnimation]="prepareRoute(o)">
+    <router-outlet #o="outlet"></router-outlet>
+</main>
 <footer>
     <div class="container">
         Copyright 2023. Todos los derechos reservados.<br>

@@ -1,0 +1,27 @@
+<h2>Usuarios</h2>
+
+<form #form="ngForm" class="filter">
+
+    <input type="text" name="nombre" [(ngModel)]="filtros.getField('nombre').value" placeholder="Nombre">
+    <input type="text" name="email" [(ngModel)]="filtros.getField('email').value" placeholder="Email">
+
+    <button class="btn primary icon" (click)="grid.refresh()">
+        <mat-icon>search</mat-icon>
+    </button>
+
+    <button class="btn green icon" (click)="agregar()">
+        <mat-icon>add</mat-icon>
+    </button>
+
+    <button class="btn secondary icon" (click)="modificar()">
+        <mat-icon>edit</mat-icon>
+    </button>
+
+</form>
+
+<app-grid
+    restURL="usuarios/listar"
+    [columns]="columnas"
+    [filters]="filtros"
+    (doubleClick)="modificar()">
+</app-grid>

@@ -1,3 +1,7 @@
+import { EmpresasPrd } from "./empresas-prd";
+import { Instancias } from "./instancias";
+import { Suscripciones } from "./suscripciones";
+
 export interface Empresas {
     empresaId: number; // bigint
     suscripcionId: number; // bigint
@@ -8,4 +12,9 @@ export interface Empresas {
     telefonos: string; // character varying(30)
     instanciaId: number | null; // integer
     estado: string; // character varying(20)
+    costoTotal: number;
+
+    fkSuscripcion: Suscripciones;
+    fkProductos: EmpresasPrd[];
+    fkInstancia: Instancias;
 }

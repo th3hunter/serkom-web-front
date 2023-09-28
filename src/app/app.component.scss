@@ -27,11 +27,13 @@ nav {
     a {
         text-decoration: none;
         color: var(--Text);
+        color: var(--Secondary);
     }
 
     a:active,
     a:visited {
         color: var(--Text);
+        color: var(--Secondary);
     }
 
     a:hover {
@@ -82,13 +84,10 @@ footer {
         }
     }
 
-}
-
-@media screen and (max-width: 375px) {
-
     ul {
         flex-direction: column;
         align-items: end;
         margin-top: 0;
     }
+
 }

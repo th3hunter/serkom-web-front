@@ -1,0 +1,115 @@
+<app-dialog
+    title="Impuesto"
+    [loading]="loading"
+    (ok)="guardar()"
+    (cancel)="cancelar()">
+
+    <form #form="ngForm" class="form vertical bordered">
+
+        <label for="nombre">Nombre</label>
+        <input
+            type="text"
+            name="nombre"
+            id="nombre"
+            [(ngModel)]="atributos.nombre"
+            placeholder="Nombre"
+            maxlength="255"
+            required>
+
+        <label for="porcentaje">Porcentaje</label>
+        <input
+            appNumber
+            dataType="decimal"
+            type="text"
+            name="porcentaje"
+            id="porcentaje"
+            [(ngModel)]="atributos.porcentaje"
+            placeholder="Porcentaje"
+            maxlength="6"
+            required>
+
+        <label for="tipoCalculo">Tipo de cálculo</label>
+        <div class="select">
+            <select
+                name="tipoCalculo"
+                id="tipoCalculo"
+                [(ngModel)]="atributos.tipoCalculo">
+
+                <option selected disabled>Elija una opción</option>
+
+                <option
+                    *ngFor="let estado of tipoCalculo"
+                    [value]="estado.id">
+
+                    {{estado.description}}
+
+                </option>
+
+            </select>
+        </div>
+
+        <label for="codigo">Código</label>
+        <input
+            type="text"
+            name="codigo"
+            id="codigo"
+            [(ngModel)]="atributos.codigo"
+            placeholder="Código"
+            maxlength="20"
+            required>
+
+        <label for="tipoImpuestoId">Tipo de Impuesto</label>
+        <div class="select">
+            <select
+                name="tipoImpuestoId"
+                id="tipoImpuestoId"
+                [(ngModel)]="atributos.tipoImpuestoId">
+
+                <option selected disabled>Elija una opción</option>
+
+                <option
+                    *ngFor="let estado of tiposImpuesto"
+                    [value]="estado.tipoImpuestoId">
+
+                    {{estado.nombre}}
+
+                </option>
+
+            </select>
+        </div>
+
+        <label for="codigoSri">Código SRI</label>
+        <input
+            type="text"
+            name="codigoSri"
+            id="codigoSri"
+            [(ngModel)]="atributos.codigoSri"
+            placeholder="Código SRI"
+            maxlength="10">
+
+        <label for="codigoPorcentajeSri">Código porcentaje SRI</label>
+        <input
+            type="text"
+            name="codigoPorcentajeSri"
+            id="codigoPorcentajeSri"
+            [(ngModel)]="atributos.codigoPorcentajeSri"
+            placeholder="Código porcentaje SRI"
+            maxlength="10">
+
+        <label for="estado">Estado</label>
+        <div class="select">
+            <select
+                name="estado"
+                id="estado"
+                [(ngModel)]="atributos.estado">
+
+                <option selected disabled>Elija una opción</option>
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+
+            </select>
+        </div>
+
+    </form>
+
+</app-dialog>

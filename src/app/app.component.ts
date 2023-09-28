@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { LoginService } from './core/services/login.service';
 import { Subscription } from 'rxjs';
 import { Credentials } from './core/interfaces/Credentials';
 import { HttpService } from './core/services/http.service';
+import { routerAnimation } from './core/animations/RouterAnimations';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+    styleUrls: ['./app.component.scss'],
+    animations: [ routerAnimation ]
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
 
     title = 'serkom-web';
     loading: boolean;
@@ -56,5 +59,13 @@ export class AppComponent {
                 this.loginService.login(res.item);
             }
         ));
+    }
+
+    prepareRoute(o: RouterOutlet): any {
+        return o && o.activatedRouteData;
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptions.unsubscribe();
     }
 }

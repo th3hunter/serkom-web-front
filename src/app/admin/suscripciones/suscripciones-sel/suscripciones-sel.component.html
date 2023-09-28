@@ -1,0 +1,39 @@
+<app-dialog
+    title="Elegir suscripción"
+    (ok)="seleccionar()"
+    (cancel)="cancelar()" >
+
+    <form class="bordered filter">
+
+        <input
+            type="text"
+            name="titular"
+            id="titular"
+            [(ngModel)]="filtros.getField('fkUsuario.nombre').value"
+            placeholder="Buscar x Titular"
+            maxlength="60">
+
+        <input
+            type="email"
+            name="email"
+            id="email"
+            [(ngModel)]="filtros.getField('fkUsuario.email').value"
+            placeholder="Buscar x Email"
+            maxlength="60">
+
+        <button class="btn primary icon" (click)="grid.refresh()">
+            <mat-icon>search</mat-icon>
+        </button>
+
+    </form>
+
+    <div class="app-grid-prompt">
+        <app-grid
+            restURL="suscripciones/listar"
+            [columns]="columnas"
+            [filters]="filtros"
+            (doubleClick)="seleccionar()">
+        </app-grid>
+    </div>
+
+</app-dialog>

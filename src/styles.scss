@@ -3,17 +3,21 @@
 
 :root {
     --Primary: #F58B1F;
-    --PrimaryLight: #5aa5f8;
+    --PrimaryLight: #F7A350;
     --PrimaryDark: #004c94;
     --PrimaryRgb: 245, 138, 7;
     --Secondary: #07417A;
-    --SecondaryLight: #A7C0CD;
+    --SecondaryLight: #0A5CAE;
     --SecondaryDark: #4B636E;
     --SecondaryRgb: 8, 72, 135;
     --Light: #E5E5E5;
     --Dark: #333;
     --Accent: #DB545A;
+    --AccentLight: #E2787E;
+    --AccentDark: #D4353D;
     --Text: rgb(17, 17, 17);
+    --Green: mediumseagreen;
+    --GreenLight: #57C789;
     /******************************************************************/
     --Body: #EBEEF5;
     --Border: #E0E0E0;
@@ -34,6 +38,7 @@ html {
     font-size: 18px;
     font-weight: 400;
     background-color: var(--Dark);
+    scroll-behavior:smooth;
 }
 
 h1,
@@ -70,6 +75,11 @@ h1 {
     cursor: pointer;
     padding: 15px 40px;
     border: none;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn.primary {
@@ -92,16 +102,78 @@ h1 {
 }
 
 .btn.primary:hover {
-    color: var(--Primary);
-    background-color: var(--Secondary);
+    background-color: var(--PrimaryLight);
 }
 
 .btn.secondary:hover {
-    color: var(--Secondary);
+    background-color: var(--SecondaryLight);
 }
 
 .btn.accent:hover {
+    background-color: var(--AccentDark);
+}
+
+.btn.transparent {
+    background-color: transparent;
+}
+
+.btn.transparent:hover {
+    background-color: var(--Light);
+}
+
+.btn.primary.transparent {
+    color: var(--Primary);
+    background-color: transparent;
+}
+
+.btn.primary.transparent:hover {
+    background-color: var(--Light);
+}
+
+.btn.secondary.transparent {
+    color: var(--Secondary);
+    background-color: transparent;
+}
+
+.btn.secondary.transparent:hover {
+    background-color: var(--Light);
+}
+
+.btn.accent.transparent {
     color: var(--Accent);
+}
+
+.btn.accent.transparent:hover {
+    background-color: var(--Light);
+}
+
+.btn.green {
+    background-color: var(--Green);
+    color: white;
+}
+
+.btn.green:hover {
+    background-color: var(--GreenLight);
+}
+
+.btn.square {
+    border-radius: 10px;
+    text-transform: none;
+    font-size: 80%;
+}
+
+.btn.outlined {
+    border: solid 1px;
+}
+
+.btn.icon {
+    padding: 0;
+}
+
+.btn.sufix {
+    background-color: var(--Light);
+    border-radius: 0;
+    padding: 0 10px;
 }
 
 section {
@@ -109,19 +181,140 @@ section {
     text-align: center;
 }
 
-input, textarea {
+.text-big {
+    font-size: 150%;
+}
+
+input, textarea, select {
     border: none;
     font: 16px 'Open Sans';
     padding: 10px 12px;
 }
 
-input:focus, input:active, textarea:focus, textarea:active {
+input:focus, input:active, textarea:focus, textarea:active, select:focus, select:active {
     outline: solid 3px var(--Primary);
 }
 
-html, body { height: 100%; }
-// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.card {
+    background-color: white;
+    padding: 20px;
+    text-align: left;
+    margin-bottom: 20px;
+}
 
+form.bordered input, form.bordered textarea, form.bordered select {
+    border: solid 1px var(--Light);
+}
+
+form label {
+    margin-bottom: -12px;
+    font-size: 75%;
+}
+
+form.filter {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 20px 0;
+
+    input, select {
+        width: 100%;
+    }
+
+    button {
+        min-width: 46px !important;
+    }
+
+}
+.form.vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.prompt, .date {
+    display: grid;
+    grid-template-columns: auto 50px;
+}
+
+a, a:visited {
+    color: var(--Secondary);
+    text-decoration: none;
+}
+
+a:hover, a:active {
+    color: var(--Primary);
+}
+
+// **********************************************************************************
+// SELECT
+// **********************************************************************************
+.select {
+    position: relative;
+    display: flex;
+    height: 3em;
+    line-height: 3;
+    overflow: hidden;
+    width: 100%;
+    border-radius: 0.25em;
+}
+
+select {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    background-color: white;
+    flex: 1;
+    padding: 0 0.5em;
+    cursor: pointer;
+    font-size: 1em;
+    font-family: "Open Sans", sans-serif;
+}
+
+.select::after {
+    content: "▼";
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: var(--Light);
+    cursor: pointer;
+    pointer-events: none;
+    transition: 0.25s all ease;
+}
+
+// **********************************************************************************
+// DATE
+// **********************************************************************************
+
+.date input {
+    min-width: 75px;
+}
+
+.date.filter mat-datepicker-toggle {
+    background-color: white;
+}
+
+// **********************************************************************************
+// MATERIAL
+// **********************************************************************************
+.mdc-label {
+    font-family: 'Open Sans';
+    font-size: 18px;
+}
+
+.mat-mdc-cell {
+    font-family: 'Open Sans';
+}
+
+mat-datepicker-toggle.mat-datepicker-toggle {
+    background-color: var(--Light);
+}
+
+.mdc-label {
+    margin-bottom: unset;
+}
 
 @media screen and (max-width: 425px) {
 

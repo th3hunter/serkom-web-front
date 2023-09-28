@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { Empresas } from 'src/app/common/models/empresas';
+import { EmpresasPrd } from 'src/app/common/models/empresas-prd';
 import { Suscripciones } from 'src/app/common/models/suscripciones';
-import { SuscripcionesProd } from 'src/app/common/models/suscripciones-prod';
 import { Usuarios } from 'src/app/common/models/usuarios';
 import { CarritoService } from 'src/app/core/services/carrito.service';
 import { ConfirmService } from 'src/app/core/services/confirm.service';
@@ -52,14 +52,15 @@ export class CheckoutComponent implements OnDestroy {
         let linea = 1;
 
         // Arma el objeto Json
-        this.suscripcion.fkEmpresas = [ this.empresa ];
-        this.suscripcion.fkProductos = this.carrito.items.map(p => {
+        this.empresa.fkProductos = this.carrito.items.map(p => {
             return {
-                suscripcionId: 0,
+                empresaId: 0,
                 detalleId: linea++,
-                productoId: p.productoId
-            } as SuscripcionesProd;
+                productoId: p.productoId,
+                precio: p.pvp
+            } as EmpresasPrd;
         });
+        this.suscripcion.fkEmpresas = [ this.empresa ];
 
         this.loading = true;
 

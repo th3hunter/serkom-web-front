@@ -1,0 +1,54 @@
+<h2>Facturas</h2>
+
+<form #form="ngForm" class="filter">
+
+    <div class="date filter">
+        <input
+            [matDatepicker]="desdePicker"
+            type="text"
+            name="desde"
+            id="desde"
+            [(ngModel)]="filtros.getField('fecha').value"
+            placeholder="Desde"
+            required>
+        <mat-datepicker-toggle matIconSuffix [for]="desdePicker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #desdePicker></mat-datepicker>
+    </div>
+
+    <div class="date filter">
+        <input
+            [matDatepicker]="hastaPicker"
+            type="text"
+            name="hasta"
+            id="hasta"
+            [(ngModel)]="filtros.getField('fecha').valueTo"
+            placeholder="Hasta"
+            required>
+        <mat-datepicker-toggle matIconSuffix [for]="hastaPicker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #hastaPicker></mat-datepicker>
+    </div>
+
+    <input type="text" name="suscripcionId" [(ngModel)]="filtros.getField('suscripcionId').value" placeholder="No. Suscripción">
+    <input type="text" name="fkSuscripcion.fkUsuario.nombre" [(ngModel)]="filtros.getField('fkSuscripcion.fkUsuario.nombre').value" placeholder="Titular">
+    <input type="text" name="noDocumento" [(ngModel)]="filtros.getField('noDocumento').value" placeholder="No. Documento">
+
+    <button class="btn primary icon" (click)="grid.refresh()">
+        <mat-icon>search</mat-icon>
+    </button>
+
+    <button class="btn green icon" (click)="agregar()">
+        <mat-icon>add</mat-icon>
+    </button>
+
+    <button class="btn secondary icon" (click)="modificar()">
+        <mat-icon>edit</mat-icon>
+    </button>
+
+</form>
+
+<app-grid
+    restURL="facturas/listar"
+    [columns]="columnas"
+    [filters]="filtros"
+    (doubleClick)="modificar()">
+</app-grid>

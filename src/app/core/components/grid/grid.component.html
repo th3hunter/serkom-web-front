@@ -1,0 +1,102 @@
+<div class="app-grid">
+
+    <table mat-table matSort [dataSource]="this.dataSource" (matSortChange)="sortData($event)">
+
+        <ng-container
+            *ngFor="let column of columns"
+            [matColumnDef]="column.id">
+
+            <th mat-header-cell *matHeaderCellDef mat-sort-header >
+                {{ column.description }}
+            </th>
+
+            <td mat-cell *matCellDef="let element">
+
+                <div class="placeholder" *ngIf="loading">
+                    <div class="animated-background"></div>
+                </div>
+
+                <ng-container *ngIf="column.controlType !== 'combobox' && column.controlType !== 'checkbox'">
+
+                    <ng-container
+                        *ngIf="!column.dataType ||
+                                column.dataType === 'string' ||
+                                column.dataType === 'integer' ||
+                                column.dataType === 'boolean'">
+                        {{ column.prefix ? column.prefix + ' ' : '' }}
+                        {{ column | descriptionFromElement : element }}
+                        {{ column.suffix ? column.suffix : '' }}
+                    </ng-container>
+
+                    <ng-container *ngIf="!loading &&(
+                            column.dataType === 'decimal' ||
+                            column.dataType === 'date' ||
+                            column.dataType === 'datetime'
+                        )">
+                        {{ column.prefix ? column.prefix + ' ' : '' }}
+                        {{ column | descriptionFromElement : element }}
+                        {{ column.suffix ? column.suffix : '' }}
+
+                    </ng-container>
+
+                    <ng-container *ngIf="column.dataType === 'image' && !loading">
+                        <div
+                            [style]="column.imageStyle ? column.imageStyle(element, column) : ''"
+                            [class]="column.icon ? 'app-icon app-icon-' + column.icon(element, column) : ''"
+                            (click)="imageClicked(element, column)">
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngIf="column.dataType === 'menu' && !loading">
+                        <button mat-icon-button [matMenuTriggerFor]="menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                    </ng-container>
+
+                </ng-container>
+
+                <ng-container *ngIf="column.controlType === 'combobox'">
+                    {{ column | descriptionFromStaticList : element }}
+                </ng-container>
+
+                <ng-container *ngIf="column.controlType === 'checkbox'">
+                    <mat-icon>
+                        {{ (column | descriptionFromElement : element) === 'true' ? 'done' : 'clear' }}
+                    </mat-icon>
+                </ng-container>
+
+                <ng-container *ngIf="column.controlType === 'button'">
+                    <button mat-icon-button (click)="column.button.onClick.call(this, element)">
+                        <mat-icon>
+                            {{ column.button.icon }}
+                        </mat-icon>
+                    </button>
+                </ng-container>
+
+            </td>
+
+        </ng-container>
+
+        <tr mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true">
+        </tr>
+
+        <tr mat-row
+            *matRowDef="let row; columns: displayedColumns; let i = index"
+            (click)="selectRow(row, i, $event)"
+            (dblclick)="doDoubleClick(row)"
+            [ngClass]="{ 'app-grid-row-selected': compareRows(row, i) }">
+        </tr>
+
+    </table>
+
+</div>
+
+<mat-paginator
+    *ngIf="hidePaginator == undefined && !loading"
+    class="app-grid-footer"
+    [pageSize]="filters && filters.recordCount ? filters.recordCount : 20"
+    [length]="this.dataSource.recordCount"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="refresh($event)" >
+</mat-paginator>

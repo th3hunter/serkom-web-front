@@ -14,6 +14,7 @@ import * as fileSaver from 'file-saver';
 import { ConfirmService } from './confirm.service';
 import { DateHelper } from 'src/app/common/helpers/date';
 import { isPlatformBrowser } from '@angular/common';
+import { LoginService } from './login.service';
 
 // Define la interfaz para establecer las opciones en las peticiones REST
 interface HttpOptions {
@@ -140,7 +141,7 @@ export class HttpService {
                     this.toastr.error('Ocurrió un error grave. Da click aquí para más información.', '', {
                         tapToDismiss: false,
                     }).onTap.subscribe(() => {
-                        const errorDetail = err.error.Content.pop();
+                        const errorDetail = err.error.items.pop();
 
                         // Arma el mensaje de error
                         const text = `Code:\n${err.status}\n\n` +
@@ -271,6 +272,9 @@ export class HttpService {
      * @returns Observable de tipo `Response`.
      */
     list<T>(serviceURI: string, parameters?: Parameter[]): Observable<Response<T>> {
+        if (!isPlatformBrowser(this.platformId))
+            return new Observable<Response<T>>();
+
         // Arma la URL
         const URL = `${this.API_URI}${serviceURI}`;
 
@@ -296,6 +300,9 @@ export class HttpService {
      * @returns Observable de tipo `Response`.
      */
     create<T>(serviceURI: string, data: any): Observable<Response<T>> {
+        if (!isPlatformBrowser(this.platformId))
+            return new Observable<Response<T>>();
+
         // Arma la URL y el querystring con el objeto primaryKey que recibo
         const URL = `${this.API_URI}${serviceURI}`;
 

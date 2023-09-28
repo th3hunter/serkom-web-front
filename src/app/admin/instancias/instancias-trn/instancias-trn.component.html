@@ -1,0 +1,45 @@
+<app-dialog
+    title="Instancias"
+    [loading]="loading"
+    (ok)="guardar()"
+    (cancel)="cancelar()">
+
+    <form #form="ngForm" class="form vertical bordered">
+
+        <label for="nombre">Nombre</label>
+        <input
+            type="text"
+            name="nombre"
+            id="nombre"
+            [(ngModel)]="atributos.nombre"
+            placeholder="Nombre"
+            maxlength="255"
+            required>
+
+        <label for="rutaServidor">Ruta Servidor</label>
+        <input
+            type="text"
+            name="rutaServidor"
+            id="rutaServidor"
+            [(ngModel)]="atributos.rutaServidor"
+            placeholder="Ruta Servidor"
+            maxlength="2048"
+            required>
+
+        <label for="estado">Estado</label>
+        <div class="select">
+            <select
+                name="estado"
+                id="estado"
+                [(ngModel)]="atributos.estado">
+
+                <option selected disabled>Elija una opción</option>
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
+
+            </select>
+        </div>
+
+    </form>
+
+</app-dialog>

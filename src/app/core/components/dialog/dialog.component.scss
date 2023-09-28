@@ -1,0 +1,17 @@
+app-loading {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.close {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.mat-mdc-dialog-actions.mdc-dialog__actions {
+    float: right;
+    margin-top: 15px;
+    // border-top: solid 1px var(--Light);
+}

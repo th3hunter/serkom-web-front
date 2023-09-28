@@ -1,0 +1,34 @@
+<app-dialog
+    title="Agregar o quitar módulos"
+    [loading]="loading"
+    (ok)="guardar()"
+    okText="Guardar Módulos seleccionados"
+    (cancel)="cancelar()" >
+
+    <p>Haga clic en un módulo para agregarlo o quitarlo de su empresa</p>
+
+    <form #form="ngForm" >
+
+        <div class="productos">
+            <div
+                *ngFor="let producto of productos; let i = index;"
+                class="producto"
+                (click)="seleccionarProducto(producto)"
+                [ngClass]="{'green': producto.seleccionado}">
+
+                <mat-icon *ngIf="producto.seleccionado">check</mat-icon>
+                <mat-icon *ngIf="!producto.seleccionado">add</mat-icon>
+
+                <span>{{producto.nombre}}</span>
+                <span class="empty"></span>
+                <span>$ {{producto.pvp | number : '1.2-2'}}</span>
+
+            </div>
+
+        </div>
+
+        <h3 class="total">Total a pagar: $ {{(total || 0) | number : '1.2-2'}}</h3>
+
+    </form>
+
+</app-dialog>

@@ -1,10 +1,17 @@
 <section>
     <div class="container">
-        <h2>Ingreso a su cuenta</h2>
+        <img src="/assets/login.svg">
         <form class="login">
+            <h2>Ingrese a su cuenta</h2>
             <input type="email" name="usuario" placeholder="Email" [(ngModel)]="usuario" required>
             <input type="password" name="password" placeholder="Contraseña" [(ngModel)]="password" required>
-            <button [appShowLoading]="loading" class="btn primary" (click)="login()">Ingresar</button>
+            <div class="actions">
+                <button [appShowLoading]="loading" class="btn primary" (click)="login()">Ingresar</button>
+                <div class ="group">
+                    <a [routerLink]="['/olvide-mi-contrasena']">Olvidé mi contraseña</a>
+                    <a [routerLink]="['/registrese']">Regístrese</a>
+                </div>
+            </div>
         </form>
     </div>
 </section>

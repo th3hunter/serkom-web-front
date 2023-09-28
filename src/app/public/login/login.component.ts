@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { TipoUsuario } from 'src/app/common/enums';
 import { Credentials } from 'src/app/core/interfaces/Credentials';
 import { HttpService } from 'src/app/core/services/http.service';
 import { LoginService } from 'src/app/core/services/login.service';
@@ -9,7 +11,7 @@ import { LoginService } from 'src/app/core/services/login.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy{
 
     usuario: string;
     password: string;
@@ -19,7 +21,13 @@ export class LoginComponent {
 
     constructor(private httpService: HttpService,
                 private loginService: LoginService,
-                private router: Router) {}
+                private router: Router,
+                private dialog: MatDialog) {}
+
+    ngOnInit(): void {
+        // Cierra todos los dialogs que puedan estar abiertos
+        this.dialog.closeAll();
+    }
 
     login(): void {
         this.loading = true;
@@ -32,9 +40,17 @@ export class LoginComponent {
 
             if (res.code == 200) {
                 this.loginService.login(res.item);
-                this.router.navigate(['/mi-cuenta']);
+
+                if (res.item.tipoUsuario == TipoUsuario.NORMAL)
+                    this.router.navigate(['/mi-cuenta']);
+                else
+                    this.router.navigate(['/admin']);
             }
         }));
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptions.unsubscribe();
     }
 
 }

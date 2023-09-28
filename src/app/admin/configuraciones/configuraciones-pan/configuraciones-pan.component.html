@@ -1,0 +1,27 @@
+<h2>Configuraciones</h2>
+
+<form #form="ngForm" class="filter">
+
+    <input type="text" name="tipoConfiguracionId" [(ngModel)]="filtros.getField('tipoConfiguracionId').value" placeholder="Tipo">
+    <input type="text" name="configuracionId" [(ngModel)]="filtros.getField('configuracionId').value" placeholder="Configuración">
+
+    <button class="btn primary icon" (click)="grid.refresh()">
+        <mat-icon>search</mat-icon>
+    </button>
+
+    <button class="btn green icon" (click)="agregar()">
+        <mat-icon>add</mat-icon>
+    </button>
+
+    <button class="btn secondary icon" (click)="modificar()">
+        <mat-icon>edit</mat-icon>
+    </button>
+
+</form>
+
+<app-grid
+    restURL="configuraciones/listar"
+    [columns]="columnas"
+    [filters]="filtros"
+    (doubleClick)="modificar()">
+</app-grid>

@@ -54,15 +54,14 @@ ul {
 
 .btn {
     margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.btn.green {
-    background-color: limegreen;
-}
-
-.btn.green:hover {
-    background-color: var(--Secondary);
-    color: var(--Primary);
+.btn.add {
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 @media screen and (max-width: 768px) {

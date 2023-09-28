@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,7 @@ import { LoginService } from 'src/app/core/services/login.service';
   templateUrl: './checkout-confirm.component.html',
   styleUrls: ['./checkout-confirm.component.scss']
 })
-export class CheckoutConfirmComponent {
+export class CheckoutConfirmComponent implements OnDestroy {
 
     codigoConfirmacion: number;
     loading: boolean;
@@ -42,6 +42,10 @@ export class CheckoutConfirmComponent {
                 }
             }
         ));
+    }
+
+    ngOnDestroy(): void {
+        this.subscriptions.unsubscribe();
     }
 
 }

@@ -8,6 +8,8 @@ export interface Usuarios {
     password: string | null; // character varying(255)
     email: string | null; // character varying(255)
     tipo: string | null; // character(3)
+    uid: string | null; // character(1)
+    codigoValidacion: number | null; // character(1)
     estado: string | null; // character(1)
 
     // fkSesiones: Sesiones[];

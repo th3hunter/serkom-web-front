@@ -20,7 +20,7 @@ export class GridFilters {
     updateField(name: string, value: any): void {
         // Busca este parámetro en el filtro actual
         const param = this.fields.find(p => p.name === name);
-        
+
         // Si lo encontró, lo actualiza
         if (param) {
             param.value = value;
